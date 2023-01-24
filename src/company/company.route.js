@@ -21,6 +21,15 @@ app.get("/getjobs",async(req,res)=>{
              res.send(e.message)
        }
  })
+app.delete("/deletejob",async(req,res)=>{
+          const {id} =req.params
+  try{
+        const job=await CompanyModel.findOneAndDelete(id)
+        res.send({job:job})
+       }catch(e){
+             res.send(e.message)
+       }
+ })
 
 
 

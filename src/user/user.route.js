@@ -39,7 +39,7 @@ app.post("/login",async(req,res)=>{
    
    if(user){
         const token=jwt.sign({id:user._id,email:user.email},"MOCK11",{expiresIn:"7 days"})
-        res.send({message:"login successfull",token})
+        res.send({message:"login successfull",token,role:user.role})
       }else{
        res.status(401).send("invalid credintials")
       }
